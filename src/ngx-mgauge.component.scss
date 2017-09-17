@@ -1,0 +1,67 @@
+.mgauge {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+}
+
+.reading-block {
+  position: absolute;
+  /*width: 22%;*/
+  display: inline-block;
+  font-weight: normal;
+  white-space: nowrap;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.reading-label {
+  font-family: inherit;
+  position: absolute;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+}
+
+.reading-label-min {
+  font-family: inherit;
+  position: absolute;
+  display: inline-block;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  padding-left: 15px;
+}
+
+.reading-label-max {
+  font-family: inherit;
+  position: absolute;
+  display: inline-block;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  padding-right: 15px;
+}
+
+.reading-affix {
+  text-decoration: none;
+  font-size: 0.6em;
+  opacity: 0.8;
+  font-weight: 200;
+}
+
+.reading-affix:first-child {
+  padding-left: 0;
+}
+
+.reading-affix:last-child {
+  padding-right: 0;
+}

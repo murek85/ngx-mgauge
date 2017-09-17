@@ -1,0 +1,15 @@
+<div #reading class="reading-block" [style.fontSize]="size * 0.16 + 'px'" [style.lineHeight]="size + 'px'" [style.width.px]="size" [style.height.px]="size">
+    <u class="reading-affix">
+        <span>{{prepend}}</span>
+    </u>
+    <span>{{value | number}}</span>
+    <u *ngIf="append" class="reading-affix">
+        <span>{{append}}</span>
+    </u>
+</div>
+<div class="reading-label" [style.fontSize]="size / 10 + 'px'" [style.lineHeight]="(5 * size / 14) + size + 'px'" [style.width.px]="size" [style.height.px]="size">
+    <span>{{label}}</span>
+</div>
+<div class="reading-label-min" [style.fontSize]="size / 9 + 'px'" [style.lineHeight]="(5 * size / 6) + size + 'px'" [style.width.px]="size" [style.height.px]="size">{{min}}</div>
+<div class="reading-label-max" [style.fontSize]="size / 9 + 'px'" [style.lineHeight]="(5 * size / 6) + size + 'px'" [style.width.px]="size" [style.height.px]="size">{{max}}</div>
+<canvas #canvas [width]="size" [height]="size"></canvas>

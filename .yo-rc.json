@@ -1,0 +1,23 @@
+{
+  "generator-ngx-library": {
+    "authorName": "Marcin Murawski",
+    "authorEmail": "marcinmur@gmail.com",
+    "githubUsername": "murek85",
+    "projectName": "ngx-mgauge",
+    "projectVersion": "0.0.0",
+    "projectDescription": "Angular library built with using ngx-library yeoman generator.",
+    "projectKeywords": [
+      "ng",
+      "angular",
+      "library"
+    ],
+    "ngPrefix": "ngx-mgauge",
+    "ngVersion": "0.0.0",
+    "ngModules": [
+      "core",
+      "common"
+    ],
+    "useGreenkeeper": false,
+    "useCompodoc": false
+  }
+}
