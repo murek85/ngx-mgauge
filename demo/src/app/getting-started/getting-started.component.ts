@@ -9,6 +9,12 @@ import { Title } from '@angular/platform-browser';
 })
 export class GettingStartedComponent implements OnInit {
 
+  thresholdsConfig = {
+    '0': { 'color': 'orange' },
+    '30': { 'color': 'green' },
+    '70': { 'color': 'red' }
+  };
+
   constructor(private titleService: Title) { }
 
   ngOnInit() {

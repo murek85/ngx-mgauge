@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppSharedModule } from './shared/shared.module';
-import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 
 import { NgxMGaugeModule } from 'ngx-mgauge';
@@ -21,7 +20,6 @@ import { NgxMGaugeModule } from 'ngx-mgauge';
         HttpModule,
         AppRoutingModule,
         AppSharedModule,
-        HomeModule,
         NgxMGaugeModule.forRoot()
     ],
     providers: [],
