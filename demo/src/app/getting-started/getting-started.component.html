@@ -17,11 +17,15 @@
 <section class="getting-started">
   <div class="container">
       <h1>Documentation</h1>
-
-      <ngx-mgauge [thresholds]="thresholdsConfig" label="Use" append="%" value="50"></ngx-mgauge>
-
       <p></p>
-      <!--<h4>Usage</h4>-->
+      <ngx-mgauge [thresholds]="config" label="Use" append="%" value="25"></ngx-mgauge>
+      <ngx-mgauge type="semi" [thresholds]="config" label="Use" append="%" value="50"></ngx-mgauge>
+      <ngx-mgauge type="full" [thresholds]="config" label="Use" append="%" value="75"></ngx-mgauge>
+      <p></p>
+
+      <h4>Usage</h4>
+      <pre><code highlight [textContent]="usageCode"></code></pre>
+      <p></p>
 
       <h4>Config Options</h4>
       <p></p>
@@ -121,9 +125,10 @@
               </tr>
           </tbody>
       </table>
+      <p></p>
 
-      <!--<h4>Global Defaults</h4>-->
-
-      <!--<h4>Configure Threshold Color Ranges</h4>-->
+      <h4>Configure Threshold Color Ranges</h4>
+      <pre><code highlight [textContent]="configureCode"></code></pre>
+      <p></p>
   </div>
 </section>

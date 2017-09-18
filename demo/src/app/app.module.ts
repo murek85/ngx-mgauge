@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppSharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 
+import { HighlightModule } from 'ngx-highlightjs';
+
 import { NgxMGaugeModule } from 'ngx-mgauge';
 
 @NgModule({
@@ -20,6 +22,7 @@ import { NgxMGaugeModule } from 'ngx-mgauge';
         HttpModule,
         AppRoutingModule,
         AppSharedModule,
+        HighlightModule.forRoot({ theme: 'monokai-sublime', path: 'assets/lib/hljs/highlight-js' }),
         NgxMGaugeModule.forRoot()
     ],
     providers: [],

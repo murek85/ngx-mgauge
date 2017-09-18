@@ -7,3 +7,18 @@
     height: 256px;
     margin-top: 1.4rem;
 }
+
+pre {
+    word-wrap: normal;
+    height: 100%;
+    margin-bottom: 0;
+    code {
+        width: 100%;
+        min-height: 100%;
+        line-height: 1.8em;
+        display: block;
+        font-size: 0.9em;
+        padding: 24px;
+        overflow: hidden;
+    }
+}

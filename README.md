@@ -58,7 +58,7 @@ export class OtherModule {
 ```
 
 #### Usage component in HTML
-`NgxMaugeModule` `<ngx-mgauge>` component
+`NgxMGaugeModule` `<ngx-mgauge>` component
 
 ```ts
 import { Component } from '@angular/core';
@@ -70,17 +70,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
     
     type = "semi";
-    value = 28.3;
-    label = "Speed";
-    appendText = "km/hr";
+    value = 50;
+    parameter = "Use";
+    unit = "%";
 }
 ```
 
 ```html
 <ngx-mgauge [type]="type" 
-           [value]="value" 
-           [label]="label"  
-           [append]="appendText">
+            [value]="value" 
+            [label]="parameter"  
+            [append]="unit">
 </ngx-mgauge>
 ```
 # Configuration Properties
@@ -108,19 +108,17 @@ export class AppComponent {
 @Component({ ... })
 export class AppComponent {
     ...
-
     config = {
         '0': {color: 'orange'},
         '30': {color: 'green'},
         '80': {color: 'red'}
     };
-
     ...
 }
 ```
 
 ```html
-<ngx-mgauge ...  [thresholds]="config"></ngx-mgauge>
+<ngx-mgauge ... [thresholds]="config"></ngx-mgauge>
 ```
 
 ## License
