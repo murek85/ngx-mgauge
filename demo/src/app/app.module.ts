@@ -22,7 +22,7 @@ import { NgxMGaugeModule } from 'ngx-mgauge';
         HttpModule,
         AppRoutingModule,
         AppSharedModule,
-        HighlightModule.forRoot({ theme: 'monokai-sublime', path: 'assets/lib/hljs/highlight-js' }),
+        HighlightModule.forRoot({ theme: 'monokai-sublime' }),
         NgxMGaugeModule.forRoot()
     ],
     providers: [],

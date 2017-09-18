@@ -9,9 +9,9 @@ import { Title } from '@angular/platform-browser';
 export class GettingStartedComponent implements OnInit {
 
   thresholdsConfig = {
-    '0': { 'color': '#FB8C00' },
-    '30': { 'color': '#7CB342' },
-    '70': { 'color': '#e53935' }
+    0: { 'color': '#FB8C00' },
+    30: { 'color': '#7CB342' },
+    70: { 'color': '#e53935' }
   };
 
   usageCode = '';
@@ -46,9 +46,9 @@ export class GettingStartedComponent implements OnInit {
       export class AppComponent {
           ...
           thresholdsConfig = {
-              '0': {color: '#FB8C00'},
-              '30': {color: '#7CB342'},
-              '70': {color: '#e53935'}
+              0: {color: '#FB8C00'},
+              30: {color: '#7CB342'},
+              70: {color: '#e53935'}
           };
           ...
       }
