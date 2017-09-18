@@ -85,22 +85,21 @@ export class AppComponent {
 ```
 # Configuration Properties
 
-| Name      | Required  | Default value  | Possible values |
-| ---       | ---       | ---               | ---            |
-| `size`    | No       | `150` | Positive Integer           |
-| `type`      | No        | `"arch"`     | `"full"`, `"semi"`, `"arch"`  |
-| `min`  | No     | `0`  | Any numeric value  |
-| `max` |  No       | `100`  | Any numeric value  |
-| `value`          |  Yes       | `undefined`  | Any numeric value |
-| `cap`       | No        | `"round"`    | `"round"`, `"butt"`           |
-| `thick`        | No        | `12`        | Any Positive Integer |
-| `label`       | No  | `undefined`                | Any String           |
-| `foregroundColor`         | No       | `#1e88e5`             |  Any color value string       |
-| `backgroundColor`    | No        |  `#e4e4e4`           |  Any color value string        |
-| `append`   | No        | `undefined`        | Any string           |
-| `prepend`      | No        | `undefined`            | Any String           |
-| `duration`    | No       | `2500` | Positive Integer           |
-| `thresholds` | No | `none` | {}
+| Name      | Default value  | Possible values |
+| ---       | ---               | ---            |
+| `size`    | `150` | Positive Integer           |
+| `type`      | `"arch"`     | `"full"`, `"semi"`, `"arch"`  |
+| `min`  | `0`  | Any numeric value  |
+| `max` |  `100`  | Any numeric value  |
+| `value*`          | `undefined`  | Any numeric value |
+| `cap`       | `"round"`    | `"round"`, `"butt"`           |
+| `thick`        | `12`        | Any Positive Integer |
+| `label`       | `undefined`                | Any String           |
+| `foregroundColor`         | `#1e88e5`             |  Any color value string       |
+| `backgroundColor`    | `#e4e4e4`           |  Any color value string        |
+| `append`   | `undefined`        | Any string           |
+| `prepend`      | `undefined`            | Any String           |
+| `thresholds` | `none` | {}
 
 ## Configure Threshold Color Ranges
 
@@ -108,7 +107,7 @@ export class AppComponent {
 @Component({ ... })
 export class AppComponent {
     ...
-    config = {
+    thresholdsConfig = {
         '0': {color: 'orange'},
         '30': {color: 'green'},
         '80': {color: 'red'}
@@ -118,7 +117,7 @@ export class AppComponent {
 ```
 
 ```html
-<ngx-mgauge ... [thresholds]="config"></ngx-mgauge>
+<ngx-mgauge ... [thresholds]="thresholdsConfig"></ngx-mgauge>
 ```
 
 ## License
