@@ -108,9 +108,9 @@ export class AppComponent {
 export class AppComponent {
     ...
     thresholdsConfig = {
-        0: {color: 'orange'},
-        30: {color: 'green'},
-        80: {color: 'red'}
+        0: {color: '#FB8C00'},
+        30: {color: '#7CB342'},
+        70: {color: '#e53935'}
     };
     ...
 }
