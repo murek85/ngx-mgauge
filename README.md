@@ -64,23 +64,29 @@ export class OtherModule {
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-component',
-    templateUrl: 'app.html'
+  selector: 'app-component',
+  templateUrl: 'app.html'
 })
 export class AppComponent {
-    
-    type = "semi";
-    value = 50;
-    parameter = "Use";
-    unit = "%";
+  options: NgxMGaugeOptions;
+
+  constructor() {
+    this.options = new NgxMGaugeOptions();
+    this.options.type = 'arch';
+    this.options.cap = 'round';
+    this.options.size = 150;
+    this.options.thick = 12;
+    this.options.foregroundColor = '#1e88e5';
+    this.options.backgroundColor = '#e4e4e4';
+  }
 }
 ```
 
 ```html
-<ngx-mgauge [type]="type" 
-            [value]="value" 
+<ngx-mgauge [value]="value" 
             [label]="parameter"  
-            [append]="unit">
+            [append]="unit"
+            [options]="options">
 </ngx-mgauge>
 ```
 
@@ -134,13 +140,13 @@ export class AppComponent {
 ```ts
 @Component({ ... })
 export class AppComponent {
-    ...
-    thresholdsConfig = {
-        0: {color: '#FB8C00'},
-        30: {color: '#7CB342'},
-        70: {color: '#e53935'}
-    };
-    ...
+  ...
+  thresholdsConfig = {
+    0: {color: '#FB8C00'},
+    30: {color: '#7CB342'},
+    70: {color: '#e53935'}
+  };
+  ...
 }
 ```
 

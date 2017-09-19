@@ -79,7 +79,9 @@ export class AppComponent {
     this.options.foregroundColor = '#1e88e5';
     this.options.backgroundColor = '#e4e4e4';
   }
-}`;
+}
+
+<ngx-mgauge ... [options]="options"></ngx-mgauge>`;
 
     this.thresholdsConfigCode = `
 @Component({ ... })
