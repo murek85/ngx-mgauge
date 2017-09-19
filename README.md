@@ -88,7 +88,6 @@ export class AppComponent {
 
 | Name      | Default value  | Possible values |
 | ---       | ---               | ---            |
-
 | `label`       | `undefined`                | Any String           |
 | `append`   | `undefined`        | Any string           |
 | `prepend`      | `undefined`            | Any String           |
@@ -101,6 +100,7 @@ export class AppComponent {
 ## Options
 
 | Name      | Default value  | Possible values |
+| ---       | ---               | ---            |
 | `size`    | `150` | Positive Integer           |
 | `type`      | `"arch"`     | `"full"`, `"semi"`, `"arch"`  |
 | `cap`       | `"round"`    | `"round"`, `"butt"`           |
