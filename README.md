@@ -62,6 +62,7 @@ export class OtherModule {
 
 ```ts
 import { Component } from '@angular/core';
+import { NgxMGaugeOptions } from 'ngx-mgauge';
 
 @Component({
   selector: 'app-component',
@@ -115,6 +116,9 @@ export class AppComponent {
 | `backgroundColor`    | `#e4e4e4`           |  Any color value string        |
 
 ```ts
+import { Component } from '@angular/core';
+import { NgxMGaugeOptions } from 'ngx-mgauge';
+
 @Component({ ... })
 export class AppComponent {
   options: NgxMGaugeOptions;

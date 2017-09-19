@@ -66,6 +66,9 @@ export class AppComponent {
 </ngx-mgauge>`;
 
     this.optionsCode = `
+import { Component } from '@angular/core';
+import { NgxMGaugeOptions } from 'ngx-mgauge';
+
 @Component({ ... })
 export class AppComponent {
   options: NgxMGaugeOptions;
@@ -84,6 +87,9 @@ export class AppComponent {
 <ngx-mgauge ... [options]="options"></ngx-mgauge>`;
 
     this.thresholdsConfigCode = `
+import { Component } from '@angular/core';
+import { NgxMGaugeOptions } from 'ngx-mgauge';
+
 @Component({ ... })
 export class AppComponent {
   ...
