@@ -1,4 +1,8 @@
-<div #reading class="block" [style.fontSize]="size * 0.16 + 'px'" [style.lineHeight]="size + 'px'" [style.width.px]="size" [style.height.px]="size">
+<div #reading class="block" 
+     [style.fontSize]="options.size * 0.16 + 'px'"
+     [style.lineHeight]="options.size + 'px'" 
+     [style.width.px]="options.size" 
+     [style.height.px]="options.size">
     <u class="affix">
         <span>{{prepend}}</span>
     </u>
@@ -7,9 +11,29 @@
         <span>{{append}}</span>
     </u>
 </div>
-<div class="label" [style.fontSize]="size / 10 + 'px'" [style.lineHeight]="(5 * size / 14) + size + 'px'" [style.width.px]="size" [style.height.px]="size">
+<div class="label" 
+     [style.fontSize]="options.size / 10 + 'px'" 
+     [style.lineHeight]="(5 * options.size / 14) + options.size + 'px'" 
+     [style.width.px]="options.size" 
+     [style.height.px]="options.size">
     <span>{{label}}</span>
 </div>
-<div *ngIf="type === 'arch'" class="min" [style.fontSize]="size / 9 + 'px'" [style.lineHeight]="(6 * size / 7) + size + 'px'" [style.width.px]="size" [style.height.px]="size">{{min}}</div>
-<div *ngIf="type === 'arch'" class="max" [style.fontSize]="size / 9 + 'px'" [style.lineHeight]="(6 * size / 7) + size + 'px'" [style.width.px]="size" [style.height.px]="size">{{max}}</div>
-<canvas #canvas [width]="size" [height]="size"></canvas>
+<div *ngIf="options.type === 'arch'"
+     class="min" 
+     [style.fontSize]="options.size / 9 + 'px'" 
+     [style.lineHeight]="(6 * options.size / 7) + options.size + 'px'"
+     [style.width.px]="options.size" 
+     [style.height.px]="options.size">
+    <span>{{min}}</span>
+</div>
+<div *ngIf="options.type === 'arch'" 
+     class="max" 
+     [style.fontSize]="options.size / 9 + 'px'" 
+     [style.lineHeight]="(6 * options.size / 7) + options.size + 'px'" 
+     [style.width.px]="options.size" 
+     [style.height.px]="options.size">
+    <span>{{max}}</span>    
+</div>
+<canvas #canvas 
+        [width]="options.size" 
+        [height]="options.size"></canvas>

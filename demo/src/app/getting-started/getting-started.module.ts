@@ -6,7 +6,7 @@ import { GettingStartedRoutingModule } from './getting-started-routing.module';
 
 import { HighlightModule } from 'ngx-highlightjs';
 
-import { NgxMGaugeModule } from 'ngx-mgauge';
+import { NgxMGaugeModule, NgxMGaugeOptions } from 'ngx-mgauge';
 
 @NgModule({
   imports: [

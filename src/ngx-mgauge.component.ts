@@ -12,19 +12,8 @@ import {
   ViewChild
 } from '@angular/core';
 
-export type NgxMGaugeType = 'full' | 'arch' | 'semi';
-export type NgxMGaugeCap = 'round' | 'butt';
-
-const DEFAULTS = {
-  MIN: 0,
-  MAX: 100,
-  TYPE: 'arch',
-  THICK: 12,
-  FOREGROUND_COLOR: '#1e88e5',
-  BACKGROUND_COLOR: '#e4e4e4',
-  CAP: 'round',
-  SIZE: 150
-};
+import { NgxMGaugeType } from './ngx-mgauge-type';
+import { NgxMGaugeOptions, DEFAULTS } from './ngx-mgauge-options';
 
 export function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
@@ -58,18 +47,10 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @ViewChild('canvas')
   _canvas: ElementRef;
 
-  private _size: number = DEFAULTS.SIZE;
-  private _min: number = DEFAULTS.MIN;
-  // private _max: number = DEFAULTS.MAX;
-
   private _initialized: boolean = false;
   private _context: CanvasRenderingContext2D | null;
 
-  @Input()
-  get size(): number { return this._size; }
-  set size(value: number) {
-      this._size = coerceNumberProperty(value);
-  }
+  private _min: number = DEFAULTS.MIN;
 
   @Input()
   get min(): number { return this._min; }
@@ -77,17 +58,13 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
       this._min = coerceNumberProperty(value, DEFAULTS.MIN);
   }
 
-  @Input()
-  max: number = DEFAULTS.MAX;
+  private _max: number = DEFAULTS.MAX;
 
   @Input()
-  type: NgxMGaugeType = DEFAULTS.TYPE as NgxMGaugeType;
-
-  @Input()
-  cap: NgxMGaugeCap = DEFAULTS.CAP as NgxMGaugeCap;
-
-  @Input()
-  thick: number = DEFAULTS.THICK;
+  get max(): number { return this._max; }
+  set max(value: number) {
+      this._max = coerceNumberProperty(value, DEFAULTS.MAX);
+  }
 
   @Input()
   label: string;
@@ -99,13 +76,10 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   prepend: string;
 
   @Input()
-  foregroundColor: string = DEFAULTS.FOREGROUND_COLOR;
-
-  @Input()
-  backgroundColor: string = DEFAULTS.BACKGROUND_COLOR;
-
-  @Input()
   thresholds: Object;
+
+  @Input()
+  options: NgxMGaugeOptions;
 
   private _value: number = 0;
 
@@ -118,10 +92,10 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input()
   duration: number = 2500;
 
-  constructor(private _elementRef: ElementRef, private _renderer: Renderer) { }
+  constructor(private _elementRef: ElementRef,
+    private _renderer: Renderer) { }
 
   ngOnChanges(changes: SimpleChanges) {
-      console.log('thick value', this.thick);
       const isTextChanged = changes['label'] || changes['append'] || changes['prepend'];
       const isDataChanged = changes['value'] || changes['min'] || changes['max'];
 
@@ -136,8 +110,8 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private _updateSize() {
-      this._renderer.setElementStyle(this._elementRef.nativeElement, 'width', cssUnit(this._size));
-      this._renderer.setElementStyle(this._elementRef.nativeElement, 'height', cssUnit(this._size));
+      this._renderer.setElementStyle(this._elementRef.nativeElement, 'width', cssUnit(this.options.size));
+      this._renderer.setElementStyle(this._elementRef.nativeElement, 'height', cssUnit(this.options.size));
   }
 
   ngAfterViewInit() {
@@ -176,7 +150,7 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
       this._clear();
       if (this._context) {
           this._context.beginPath();
-          this._context.strokeStyle = this.backgroundColor;
+          this._context.strokeStyle = this.options.backgroundColor;
           this._context.arc(center.x, center.y, radius, middle, tail, false);
           this._context.stroke();
 
@@ -194,16 +168,16 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private _getWidth() {
-      return this.size;
+      return this.options.size;
   }
 
   private _getHeight() {
-      return this.size;
+      return this.options.size;
   }
 
   private _getRadius() {
       const center = this._getCenter();
-      return center.x - this.thick;
+      return center.x - this.options.thick;
   }
 
   private _getCenter() {
@@ -227,10 +201,10 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   private _setupStyles() {
       if (this._context) {
-          this._context.canvas.width = this.size;
-          this._context.canvas.height = this.size;
-          this._context.lineCap = this.cap.toString();
-          this._context.lineWidth = this.thick;
+          this._context.canvas.width = this.options.size;
+          this._context.canvas.height = this.options.size;
+          this._context.lineCap = this.options.cap.toString();
+          this._context.lineWidth = this.options.thick;
       }
   }
 
@@ -240,13 +214,13 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
           .sort().reverse()[0];
 
       return match !== undefined
-          ? this.thresholds[match].color || this.foregroundColor
-          : this.foregroundColor;
+          ? this.thresholds[match].color || this.options.foregroundColor
+          : this.options.foregroundColor;
   }
 
   private _create() {
       let self = this,
-          type = this.type,
+          type = this.options.type,
           bounds = this._getBounds(type),
           duration = this.duration,
           min = this.min,

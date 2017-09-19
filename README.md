@@ -83,23 +83,51 @@ export class AppComponent {
             [append]="unit">
 </ngx-mgauge>
 ```
+
 # Configuration Properties
 
 | Name      | Default value  | Possible values |
 | ---       | ---               | ---            |
-| `size`    | `150` | Positive Integer           |
-| `type`      | `"arch"`     | `"full"`, `"semi"`, `"arch"`  |
-| `min`  | `0`  | Any numeric value  |
-| `max` |  `100`  | Any numeric value  |
-| `value*`          | `undefined`  | Any numeric value |
-| `cap`       | `"round"`    | `"round"`, `"butt"`           |
-| `thick`        | `12`        | Any Positive Integer |
+
 | `label`       | `undefined`                | Any String           |
-| `foregroundColor`         | `#1e88e5`             |  Any color value string       |
-| `backgroundColor`    | `#e4e4e4`           |  Any color value string        |
 | `append`   | `undefined`        | Any string           |
 | `prepend`      | `undefined`            | Any String           |
+| `value*`          | `undefined`  | Any numeric value |
+| `min`  | `0`  | Any numeric value  |
+| `max` |  `100`  | Any numeric value  |
+| `options` | `none` | {}
 | `thresholds` | `none` | {}
+
+## Options
+
+| Name      | Default value  | Possible values |
+| `size`    | `150` | Positive Integer           |
+| `type`      | `"arch"`     | `"full"`, `"semi"`, `"arch"`  |
+| `cap`       | `"round"`    | `"round"`, `"butt"`           |
+| `thick`        | `12`        | Any Positive Integer |
+| `foregroundColor`         | `#1e88e5`             |  Any color value string       |
+| `backgroundColor`    | `#e4e4e4`           |  Any color value string        |
+
+```ts
+@Component({ ... })
+export class AppComponent {
+  options: NgxMGaugeOptions;
+
+  constructor() {
+    this.options = new NgxMGaugeOptions();
+    this.options.type = 'arch';
+    this.options.cap = 'round';
+    this.options.size = 150;
+    this.options.thick = 12;
+    this.options.foregroundColor = '#1e88e5';
+    this.options.backgroundColor = '#e4e4e4';
+  }
+}
+```
+
+```html
+<ngx-mgauge ... [options]="options"></ngx-mgauge>
+```
 
 ## Configure Threshold Color Ranges
 
