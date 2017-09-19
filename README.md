@@ -94,7 +94,7 @@ export class AppComponent {
 | `value*`          | `undefined`  | Any numeric value |
 | `min`  | `0`  | Any numeric value  |
 | `max` |  `100`  | Any numeric value  |
-| `options` | `none` | {}
+| `options*` | `none` | {}
 | `thresholds` | `none` | {}
 
 ## Options
