@@ -48,17 +48,18 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   _canvas: ElementRef;
 
   private _initialized: boolean = false;
-  private _context: CanvasRenderingContext2D | null;
+  private _context2d: CanvasRenderingContext2D | null;
 
   private _min: number = DEFAULTS.MIN;
+  private _max: number = DEFAULTS.MAX;
+
+  private _value: number = 0;
 
   @Input()
   get min(): number { return this._min; }
   set min(value: number) {
       this._min = coerceNumberProperty(value, DEFAULTS.MIN);
   }
-
-  private _max: number = DEFAULTS.MAX;
 
   @Input()
   get max(): number { return this._max; }
@@ -81,8 +82,6 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input()
   options: NgxMGaugeOptions;
 
-  private _value: number = 0;
-
   @Input()
   get value() { return this._value; }
   set value(val: number) {
@@ -90,7 +89,7 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   @Input()
-  duration: number = 2500;
+  duration: number = DEFAULTS.DURATION;
 
   constructor(private _elementRef: ElementRef,
     private _renderer: Renderer) { }
@@ -101,7 +100,7 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
 
       if (this._initialized) {
           if (isDataChanged) {
-              this._update();
+              this._refresh();
           } else if (!isTextChanged) {
               this._destroy();
               this._init();
@@ -109,7 +108,7 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
       }
   }
 
-  private _updateSize() {
+  private _refreshSize() {
       this._renderer.setElementStyle(this._elementRef.nativeElement, 'width', cssUnit(this.options.size));
       this._renderer.setElementStyle(this._elementRef.nativeElement, 'height', cssUnit(this.options.size));
   }
@@ -148,22 +147,22 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
           radius = this._getRadius();
 
       this._clear();
-      if (this._context) {
-          this._context.beginPath();
-          this._context.strokeStyle = this.options.backgroundColor;
-          this._context.arc(center.x, center.y, radius, middle, tail, false);
-          this._context.stroke();
+      if (this._context2d) {
+          this._context2d.beginPath();
+          this._context2d.strokeStyle = this.options.backgroundColor;
+          this._context2d.arc(center.x, center.y, radius, middle, tail, false);
+          this._context2d.stroke();
 
-          this._context.beginPath();
-          this._context.strokeStyle = color;
-          this._context.arc(center.x, center.y, radius, start, middle, false);
-          this._context.stroke();
+          this._context2d.beginPath();
+          this._context2d.strokeStyle = color;
+          this._context2d.arc(center.x, center.y, radius, start, middle, false);
+          this._context2d.stroke();
       }
   }
 
   private _clear() {
-      if (this._context) {
-          this._context.clearRect(0, 0, this._getWidth(), this._getHeight());
+      if (this._context2d) {
+          this._context2d.clearRect(0, 0, this._getWidth(), this._getHeight());
       }
   }
 
@@ -187,24 +186,24 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private _init() {
-      this._context = (this._canvas.nativeElement as HTMLCanvasElement).getContext('2d');
+      this._context2d = (this._canvas.nativeElement as HTMLCanvasElement).getContext('2d');
       this._initialized = true;
-      this._updateSize();
-      this._setupStyles();
+      this._refreshSize();
+      this._configStyles();
       this._create();
   }
 
   private _destroy() {
       this._clear();
-      this._context = null;
+      this._context2d = null;
   }
 
-  private _setupStyles() {
-      if (this._context) {
-          this._context.canvas.width = this.options.size;
-          this._context.canvas.height = this.options.size;
-          this._context.lineCap = this.options.cap.toString();
-          this._context.lineWidth = this.options.thick;
+  private _configStyles() {
+      if (this._context2d) {
+          this._context2d.canvas.width = this.options.size;
+          this._context2d.canvas.height = this.options.size;
+          this._context2d.lineCap = this.options.cap.toString();
+          this._context2d.lineWidth = this.options.thick;
       }
   }
 
@@ -254,7 +253,7 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
       });
   }
 
-  private _update() {
+  private _refresh() {
       this._clear();
       this._create();
   }
