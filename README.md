@@ -79,6 +79,7 @@ export class AppComponent {
     this.options.thick = 12;
     this.options.foregroundColor = '#1e88e5';
     this.options.backgroundColor = '#e4e4e4';
+    this.options.showExtremum = false;
   }
 }
 ```
@@ -114,6 +115,7 @@ export class AppComponent {
 | `thick`        | `12`        | Any Positive Integer |
 | `foregroundColor`         | `#1e88e5`             |  Any color value string       |
 | `backgroundColor`    | `#e4e4e4`           |  Any color value string        |
+| `showExtremum`    | `true`           |  Show Min and Max value        |
 
 ```ts
 import { Component } from '@angular/core';
@@ -131,6 +133,7 @@ export class AppComponent {
     this.options.thick = 12;
     this.options.foregroundColor = '#1e88e5';
     this.options.backgroundColor = '#e4e4e4';
+    this.options.showExtremum = false;
   }
 }
 ```

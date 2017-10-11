@@ -91,6 +91,9 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input()
   duration: number = DEFAULTS.DURATION;
 
+  @Input()
+  showExtremum: boolean = DEFAULTS.SHOW_EXTREMUM;
+
   constructor(private _elementRef: ElementRef,
     private _renderer: Renderer) { }
 
@@ -226,7 +229,7 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
           max = this.max,
           value = clamp(this.value, this.min, this.max),
           head = bounds.head,
-          unit = (bounds.tail - bounds.head) / (max - min),
+          unit = (bounds.tail - bounds.head) / (max !== min ? (max - min) : 1),
           displacement = unit * (value - min),
           tail = bounds.tail,
           color = this._getForegroundColorByRange(value),

@@ -10,7 +10,8 @@ export const DEFAULTS = {
     BACKGROUND_COLOR: '#e4e4e4',
     CAP: 'round',
     SIZE: 150,
-    DURATION: 2500
+    DURATION: 2500,
+    SHOW_EXTREMUM: true
   };
 
 export class NgxMGaugeOptions {
@@ -21,4 +22,5 @@ export class NgxMGaugeOptions {
     foregroundColor? = DEFAULTS.FOREGROUND_COLOR;
     backgroundColor? = DEFAULTS.BACKGROUND_COLOR;
     duration? = DEFAULTS.DURATION;
+    showExtremum? = DEFAULTS.SHOW_EXTREMUM;
 }

@@ -21,11 +21,14 @@
         <ngx-mgauge label="Use"
                     append="%"
                     value="25"
+                    showExtremum="false"
                     [options]="gaugeArchOptions"
                     [thresholds]="thresholdsConfig" ></ngx-mgauge>
         <ngx-mgauge label="Use"
                     append="%"
                     value="50"
+                    min="20"
+                    max="200"
                     [options]="gaugeSemiOptions"
                     [thresholds]="thresholdsConfig" ></ngx-mgauge>
         <ngx-mgauge label="Use"
@@ -133,6 +136,11 @@
                     <td>background-color</td>
                     <td>#e4e4e4</td>
                     <td>Any color value string</td>
+                </tr>
+                <tr>
+                  <td>show-extremum</td>
+                  <td>true</td>
+                  <td>Show Min and Max value</td>
                 </tr>
             </tbody>
         </table>

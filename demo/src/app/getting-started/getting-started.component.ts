@@ -30,9 +30,11 @@ export class GettingStartedComponent implements OnInit {
     this.titleService.setTitle('Getting Started | ngx-mgauge');
 
     this.gaugeArchOptions = new NgxMGaugeOptions();
+    this.gaugeArchOptions.showExtremum = true;
 
     this.gaugeSemiOptions = new NgxMGaugeOptions();
     this.gaugeSemiOptions.type = 'semi';
+    this.gaugeSemiOptions.showExtremum = true;
 
     this.gaugeFullOptions = new NgxMGaugeOptions();
     this.gaugeFullOptions.type = 'full';
@@ -56,6 +58,7 @@ export class AppComponent {
     this.options.thick = 12;
     this.options.foregroundColor = '#1e88e5';
     this.options.backgroundColor = '#e4e4e4';
+    this.options.showExtremum = false;
   }
 }
 
@@ -81,6 +84,7 @@ export class AppComponent {
     this.options.thick = 12;
     this.options.foregroundColor = '#1e88e5';
     this.options.backgroundColor = '#e4e4e4';
+    this.options.showExtremum = false;
   }
 }
 

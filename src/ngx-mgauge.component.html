@@ -18,18 +18,20 @@
      [style.height.px]="options.size">
     <span>{{label}}</span>
 </div>
-<div *ngIf="options.type === 'arch'"
+<div *ngIf="options.showExtremum === true && options.type !== 'full'"
      class="min"
      [style.fontSize]="options.size / 9 + 'px'"
-     [style.lineHeight]="(6 * options.size / 7) + options.size + 'px'"
+     [style.lineHeight]="(6 * options.size / (options.type === 'semi' ? 20 : 7.5)) + options.size + 'px'"
+     [style.paddingLeft]="(options.type === 'semi' ? 5 : 15) + 'px'"
      [style.width.px]="options.size"
      [style.height.px]="options.size">
     <span>{{min}}</span>
 </div>
-<div *ngIf="options.type === 'arch'"
+<div *ngIf="options.showExtremum === true && options.type !== 'full'"
      class="max"
      [style.fontSize]="options.size / 9 + 'px'"
-     [style.lineHeight]="(6 * options.size / 7) + options.size + 'px'"
+     [style.lineHeight]="(6 * options.size / (options.type === 'semi' ? 20 : 7.5)) + options.size + 'px'"
+     [style.paddingRight]="(options.type === 'semi' ? 5 : 15) + 'px'"
      [style.width.px]="options.size"
      [style.height.px]="options.size">
     <span>{{max}}</span>
