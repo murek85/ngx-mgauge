@@ -22,20 +22,17 @@
                     append="%"
                     value="25"
                     showExtremum="false"
-                    [options]="gaugeArchOptions"
-                    [thresholds]="thresholdsConfig" ></ngx-mgauge>
+                    [options]="gaugeArchOptions"></ngx-mgauge>
         <ngx-mgauge label="Use"
                     append="%"
                     value="50"
-                    min="20"
-                    max="200"
-                    [options]="gaugeSemiOptions"
-                    [thresholds]="thresholdsConfig" ></ngx-mgauge>
+                    min="0"
+                    max="100"
+                    [options]="gaugeSemiOptions"></ngx-mgauge>
         <ngx-mgauge label="Use"
                     append="%"
                     value="75"
-                    [options]="gaugeFullOptions"
-                    [thresholds]="thresholdsConfig" ></ngx-mgauge>
+                    [options]="gaugeFullOptions"></ngx-mgauge>
         <p></p>
 
         <h4>Usage</h4>
@@ -138,6 +135,11 @@
                     <td>Any color value string</td>
                 </tr>
                 <tr>
+                    <td>fill-color</td>
+                    <td>#bbdefb</td>
+                    <td>Any color value string</td>
+                </tr>
+                <tr>
                   <td>show-extremum</td>
                   <td>true</td>
                   <td>Show Min and Max value</td>
@@ -145,6 +147,23 @@
             </tbody>
         </table>
         <pre><code highlight [textContent]="optionsCode"></code></pre>
+        <p></p>
+
+        <ngx-mgauge label="Use"
+                append="%"
+                value="25"
+                [options]="gaugeThresholdsOptions"
+                [thresholds]="thresholdsConfig"></ngx-mgauge>
+        <ngx-mgauge label="Use"
+                append="%"
+                value="60"
+                [options]="gaugeThresholdsOptions"
+                [thresholds]="thresholdsConfig"></ngx-mgauge>
+        <ngx-mgauge label="Use"
+                append="%"
+                value="90"
+                [options]="gaugeThresholdsOptions"
+                [thresholds]="thresholdsConfig"></ngx-mgauge>
         <p></p>
 
         <h4>Configure Threshold Color Ranges</h4>

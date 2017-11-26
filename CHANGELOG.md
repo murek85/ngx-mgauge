@@ -1,3 +1,8 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/murek85/ngx-mgauge/compare/v0.3.0...v0.4.0) (2017-11-26)
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/murek85/ngx-mgauge/compare/v0.2.0...v0.3.0) (2017-10-11)
 

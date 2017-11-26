@@ -160,6 +160,11 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
           this._context2d.strokeStyle = color;
           this._context2d.arc(center.x, center.y, radius, start, middle, false);
           this._context2d.stroke();
+
+          this._context2d.beginPath();
+          this._context2d.arc(center.x, center.y, radius - this.options.thick, 0, 2 * Math.PI, false);
+          this._context2d.fillStyle = this.options.fillColor;
+          this._context2d.fill();
       }
   }
 
@@ -211,13 +216,17 @@ export class NgxMGaugeComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private _getForegroundColorByRange(value: number) {
-      const match = Object.keys(this.thresholds)
-          .filter(function (item) { return isNumber(item) && Number(item) <= Number(value); })
-          .sort().reverse()[0];
+      if (this.thresholds) {
+          const match = Object.keys(this.thresholds)
+              .filter(function (item) { return isNumber(item) && Number(item) <= Number(value); })
+              .sort().reverse()[0];
 
-      return match !== undefined
-          ? this.thresholds[match].color || this.options.foregroundColor
-          : this.options.foregroundColor;
+          return match !== undefined
+              ? this.thresholds[match].color || this.options.foregroundColor
+              : this.options.foregroundColor;
+      } else {
+          return this.options.foregroundColor;
+      }
   }
 
   private _create() {
